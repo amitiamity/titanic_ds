@@ -34,19 +34,32 @@ df = pd.concat((train_df,test_df),axis=0)
 #4 selecting column range
 # print(df.loc[5:10,'Age':'Ticket'])
 #5 selecting discrete columns
-print(df.loc[5:10,['Age','Ticket']])
+# print(df.loc[5:10,['Age','Ticket']])
 
 #position based indexing
-print(df.info())
-print(df.iloc[5:10,3:5])
+# print(df.info())
+# print(df.iloc[5:10,3:5])
 
 #filtering data
-print(df.loc[df.Sex == 'male',['Age']])
+# print(df.loc[df.Sex == 'male',['Age']])
 #all columns and rows where Sex is male
-print(df.loc[df.Sex== 'male',:])
+# print(df.loc[df.Sex== 'male',:])
 #use & and or operator
-print(df.loc[((df.Sex == 'male') & (df.Pclass == 1)),:])
+# print(df.loc[((df.Sex == 'male') & (df.Pclass == 1)),:])
 
 #Summary Statistics
+print(df.describe())
+#calculate the mean and median
+print('Average  fare  is : {0}'.format(df.Fare.mean()))
+print(df.Fare.median())
+
+#count and proportions
+#categorical data
+print(df.describe(include='all'))
+print(df.Sex.value_counts())
+#finnd the proportion
+print((df.Sex.value_counts(normalize=True)))
+#applying on other columns
+print(df[df.Survived != -888].Survived.value_counts())
 
 
